@@ -24,6 +24,10 @@ class Product
   	nil # not found
   end
 
+  def self.in_stock
+  	@@products.select {|product| product.in_stock? }
+  end
+
   private 
 
   def add_to_products
