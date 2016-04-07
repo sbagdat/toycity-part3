@@ -1,15 +1,20 @@
 class Customer
   @@customers = []
 
-  attr_reader :name
+  attr_reader :name, :transactions
 
   def initialize(options = {})
     @name = options[:name] || 'No name'
+    @transactions = []
     add_to_customers
   end
 
   def purchase(product)
     Transaction.new(self, Product.find_by_title(product.title))
+  end
+
+  def add_transaction(transaction)
+    @transactions << transaction
   end
 
   def self.all

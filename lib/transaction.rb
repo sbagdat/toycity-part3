@@ -14,6 +14,16 @@ class Transaction
 
   def add_transaction
     @@transactions << self
+    add_transaction_to_customer
+    add_transaction_to_product
+  end
+
+  def add_transaction_to_customer
+    @customer.add_transaction(self)
+  end
+
+  def add_transaction_to_product
+    @product.add_transaction(self)
   end
 
   def self.all

@@ -1,11 +1,12 @@
 class Product
   @@products = []
-  attr_reader :title, :price, :stock
+  attr_reader :title, :price, :stock, :transactions
 
   def initialize(options={})
   	@title = options[:title] || 'untitled'
   	@price = options[:price] || 0.0
   	@stock = options[:stock] || 0
+    @transactions = []
   	add_to_products
   end
 
@@ -19,6 +20,10 @@ class Product
     else
       raise OutOfStockError, "'#{@title}' is out of stock."
     end
+  end
+
+  def add_transaction(transaction)
+    @transactions << transaction
   end
 
   def self.all
