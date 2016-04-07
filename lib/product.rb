@@ -1,14 +1,27 @@
 class Product
   @@products = []
-  attr_reader :title
+  attr_reader :title, :price, :stock
 
   def initialize(options={})
-  	@title = options[:title]
+  	@title = options[:title] || 'untitled'
+  	@price = options[:price] || 0.0
+  	@stock = options[:stock] || 0
   	add_to_products
+  end
+
+  def in_stock?
+  	@stock > 0
   end
 
   def self.all
     @@products
+  end
+
+  def self.find_by_title(product_title)
+  	@@products.each do |product|
+  	  return product if product.title == product_title
+  	end
+  	nil # not found
   end
 
   private 
