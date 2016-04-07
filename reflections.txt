@@ -1,0 +1,20 @@
+1. How long did you spend working on this project?
+Approximately 4 hours
+
+2.What was the most rewarding challenge you conquered?
+Transaction#purchase method
+
+3. What two additional features did you build? Why?
+- Feature #1: Customer and product only transactions
+              Undoubtly, we need this feature in the near future.
+- Feature #2: Add Finder class
+              To make finding operation more flexible and easily extensible.
+- Feature #3: Add MissingArgumentError
+              Good softwares should always catch possible bugs and show proper
+              messages related to it
+
+4. Where do you still have room to grow?
+- Returning products
+- More detailed classes
+- Save/Load records
+
