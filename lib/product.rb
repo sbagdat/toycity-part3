@@ -3,9 +3,9 @@ class Product
   attr_reader :title, :price, :stock, :transactions
 
   def initialize(options={})
-  	@title = options[:title] || 'untitled'
-  	@price = options[:price] || 0.0
-  	@stock = options[:stock] || 0
+  	@title = options[:title] || (raise MissingArgumentError, 'Product object cannot be untitled.')
+  	@price = options[:price] || (raise MissingArgumentError, 'Product object must have a prices.')
+  	@stock = options[:stock] || (raise MissingArgumentError, 'You must provide a stock value for the product object.')
     @transactions = []
   	add_to_products
   end
@@ -46,6 +46,6 @@ class Product
   end
 
   def exist?
-  	 @@products.any? { |p| p.title == @title }
+    @@products.any? { |p| p.title == @title }
   end
 end

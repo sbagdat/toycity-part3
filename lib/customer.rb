@@ -1,10 +1,9 @@
 class Customer
   @@customers = []
-
   attr_reader :name, :transactions
 
   def initialize(options = {})
-    @name = options[:name] || 'No name'
+    @name = options[:name] || (raise MissingArgumentError, 'Customer object cannot be nameless.')
     @transactions = []
     add_to_customers
   end
