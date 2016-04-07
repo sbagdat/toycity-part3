@@ -6,7 +6,6 @@ class Transaction
   def initialize(customer, product)
     @customer = customer
     @product = product
-    p @product
     assign_id
     add_transaction
     update_stock
@@ -31,10 +30,7 @@ class Transaction
   end
 
   def self.find(id)
-    @@transactions.each do |transaction|
-      return transaction if transaction.id == id
-    end
-    nil
+    Finder.find_in @@transactions, id: id
   end
 
   private

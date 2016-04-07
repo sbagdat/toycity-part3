@@ -31,10 +31,7 @@ class Product
   end
 
   def self.find_by_title(product_title)
-  	@@products.each do |product|
-  	  return product if product.title == product_title
-  	end
-  	nil # not found
+    Finder.find_in @@products, title: product_title
   end
 
   def self.in_stock
@@ -51,6 +48,4 @@ class Product
   def exist?
   	 @@products.any? { |p| p.title == @title }
   end
-
-
 end

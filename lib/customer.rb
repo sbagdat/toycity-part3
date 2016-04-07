@@ -22,10 +22,7 @@ class Customer
   end
 
   def self.find_by_name(customer_name)
-    @@customers.each do |customer|
-      return customer if customer.name == customer_name
-    end
-    nil # not found
+    Finder.find_in @@customers, name: customer_name
   end
 
   private
