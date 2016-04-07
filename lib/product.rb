@@ -13,6 +13,14 @@ class Product
   	@stock > 0
   end
 
+  def sell
+    if in_stock?
+      @stock -= 1
+    else
+      raise OutOfStockError, "'#{@title}' is out of stock."
+    end
+  end
+
   def self.all
     @@products
   end
@@ -28,7 +36,7 @@ class Product
   	@@products.select {|product| product.in_stock? }
   end
 
-  private 
+  private
 
   def add_to_products
   	raise DuplicateProductError, "#{@title} already exists." if exist?
@@ -37,5 +45,7 @@ class Product
 
   def exist?
   	 @@products.any? { |p| p.title == @title }
-  end	
+  end
+
+
 end
